@@ -23,7 +23,7 @@ export const ProfileCard: FC<ProfileCardProps>= (props) => {
         justifyContent="space-evenly"
         alignItems="center"
     >
-        <Grid container xs direction="column">
+        <Grid item xs>
             <Typography>Nombre: {firstname}</Typography>
             <Typography>Apellido: {lastname} </Typography>
             <Typography>Email: {email}</Typography>
