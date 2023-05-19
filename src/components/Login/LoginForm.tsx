@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
+import {loginEndpoint} from "../../constants/endpoints";
 
 type LoginFormProps = {
     isLogin?: boolean
@@ -13,13 +14,28 @@ type LoginFormProps = {
 const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
     const formik = useFormik({
         initialValues: {
-            email: 'foobar@example.com',
-            password: 'foobar',
+            email: '',
+            password: '',
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             //TODO send data to server
-            alert(JSON.stringify(values, null, 2));
+            try {
+                const base64 = btoa(values.email + ':' + values.password);
+                const loginFetch = await fetch(loginEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + base64
+                    }
+                })
+                const loginResponse = loginFetch.json();
+                console.log(loginResponse);
+            } catch (error) {
+                console.log(error);
+            }
+
+
         },
     });
 
