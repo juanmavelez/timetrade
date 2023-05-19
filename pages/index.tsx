@@ -1,17 +1,41 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Header from "../src/components/Header/Header";
-import ServicesList from "../src/components/ServicesList";
-import LoginForm from "../src/components/Login/LoginForm";
+import ServicesList, {ServicesListProps} from "../src/components/ServicesList";
+import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
+import {GetServerSideProps, NextPage} from "next";
+import type { InferGetServerSidePropsType } from 'next';
 
-export default function Home() {
+type HomePage = {
+    lists?: Array<ServicesListProps>;
+};
+
+const Home : NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) =>{
+    const { lists } = props;
+
   return (
       <>
           <Header></Header>
           <Container maxWidth="lg">
-              <ServicesList></ServicesList>
-              <LoginForm></LoginForm>
+              {lists !== undefined && lists.length > 0 && lists.map((list) => {
+                  return(<ServicesList {...list}></ServicesList>)
+              })}
+              <ProfileCard ></ProfileCard>
           </Container>
       </>
   );
 }
+
+export default Home;
+
+export const getServerSideProps: GetServerSideProps<HomePage> = async () => {
+    try {
+        const res = await fetch('https://api.github.com/repos/vercel/next.js');
+        const lists = await res.json();
+        return { props: { lists } };
+    } catch (err) {
+        return { props: {}};
+    }
+
+};
+
