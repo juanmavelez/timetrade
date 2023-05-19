@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { FC } from "react";
+import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
 
 type LoginFormProps = {
@@ -23,7 +24,7 @@ const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
     });
 
     return (
-        <div>
+        <Container>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
                     fullWidth
@@ -50,7 +51,7 @@ const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
                     Submit
                 </Button>
             </form>
-        </div>
+        </Container>
     );
 };
 
