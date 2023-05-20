@@ -20,8 +20,8 @@ export default async (
             const body = authJWT ?? ""
 
             res.status(backendRes.status).json(body);
-        } catch (error) {
-            res.status(error.response?.status ?? 500).json(error);
+        } catch (error: unknown) {
+            res.status(500).json(error);
         }
     } else {
         res.status(405).end();
