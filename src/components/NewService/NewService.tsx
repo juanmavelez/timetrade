@@ -4,9 +4,8 @@ import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
-
-
-
+import {CREATE_SERVICE_ENDPOINT, LOCAL_SIGN_UP} from "../../constants/endpoints";
+import {getBearer} from "../../utils/getBearer";
 
 const NewService: FC = () => {
     const formik = useFormik({
@@ -17,6 +16,29 @@ const NewService: FC = () => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
+            try {
+                const response = await fetch(CREATE_SERVICE_ENDPOINT, {
+                    method: 'POST',
+                    credentials: "include",
+                    headers: {
+                        'Authorization': `Bearer ${getBearer()}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user: {
+                            title: values.title,
+                            description: values.description,
+                            isRequest: values.isRequest,
+                        }
+                    })
+                });
+                if(response.ok) {
+                    //TODO send to the service page once we have the id
+                }
+            }catch (e) {
+                console.error(e)
+            }
+
         },
     });
 
@@ -38,7 +60,7 @@ const NewService: FC = () => {
                     id="description"
                     name="description"
                     label="Descripción"
-                    type="password"
+                    type="text"
                     value={formik.values.description}
                     onChange={formik.handleChange}
                     error={formik.touched.description && formik.errors.description !== undefined}

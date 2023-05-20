@@ -29,7 +29,6 @@ const Home : NextPage = () =>{
 
     return (
      <>
-          <Header></Header>
           <Container maxWidth="lg">
               {data.lists!== undefined && data.lists.length > 0 && data.lists.map((list: ServicesListProps) => {
                  return(<ServicesList {...list}></ServicesList>)
