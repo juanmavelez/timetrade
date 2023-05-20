@@ -1,15 +1,20 @@
 import {NextPage} from "next";
 import Header from "../src/components/Header/Header";
 import Container from "@mui/material/Container";
-import * as React from "react";
-import LoginForm from "../src/components/Login/LoginForm";
+import Typography from "@mui/material/Typography";
+import Link from "../src/components/Link";
+import {LOGIN_PAGE} from "../src/constants/urls";
+import SignUpForm from "../src/components/SignUp/SignUpForm";
 
 const SignUp : NextPage = () => {
     return (
         <>
             <Header></Header>
             <Container maxWidth="lg">
-                <LoginForm></LoginForm>
+                <SignUpForm></SignUpForm>
+                <Typography>
+                    Ya tienes una cuenta? <Link href={LOGIN_PAGE}>Haz login!</Link>
+                </Typography>
             </Container>
         </>
     );

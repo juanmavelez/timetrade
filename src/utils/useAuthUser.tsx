@@ -7,6 +7,6 @@ export const useAuthUser = () => {
     const bearerToken = getBearer();
 
     if(bearerToken === undefined || bearerToken === null){
-        router.push(LOGIN_PAGE);
+        void router.push(LOGIN_PAGE);
     }
 }
