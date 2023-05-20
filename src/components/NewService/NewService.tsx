@@ -6,8 +6,12 @@ import {validationSchema} from "./validationSchema";
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import {CREATE_SERVICE_ENDPOINT} from "../../constants/endpoints";
 import {getBearer} from "../../utils/getBearer";
+import {responseSchema} from "./responseSchema";
+import {useRouter} from "next/router";
+import {SERVICE_PAGE} from "../../constants/urls";
 
 const NewService: FC = () => {
+    const router = useRouter();
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -33,7 +37,13 @@ const NewService: FC = () => {
                     })
                 });
                 if(response.ok) {
-                    //TODO send to the service page once we have the id
+                    const responseValue =  await response.json();
+                    const isValidSchema = await responseSchema.isValid(responseValue);
+                    if(isValidSchema){
+                        void router.push(`${SERVICE_PAGE}${responseValue.id}`)
+                    } else{
+                    console.error("Wrong schema returned when creating a service");
+                    }
                 }
             }catch (e) {
                 console.error(e)
