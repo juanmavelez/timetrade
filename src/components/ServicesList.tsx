@@ -6,19 +6,19 @@ import {FC} from "react";
 import Typography from "@mui/material/Typography";
 
 export interface ServicesListProps {
-   serviceList: Array<ServiceProps>;
+   services_list: Array<ServiceProps>;
    title: string;
 }
 
  const ServicesList: FC<ServicesListProps> = (props) => {
-    const {serviceList, title} = props;
+    const {services_list, title} = props;
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Typography variant="h6">
                 {title}
             </Typography>
             <Grid container spacing={2}>
-                {serviceList.map((service) => {
+                {services_list.map((service) => {
                     return(<Grid item>
                         <Service {...service}></Service>
                     </Grid>)})
