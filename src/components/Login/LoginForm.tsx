@@ -32,8 +32,6 @@ const LoginForm: FC = () => {
                 const user = parsedResponse.user;
                 const bearerToken = parsedResponse.token
 
-                console.log("user", user, "bearer", bearerToken);
-
                 if(user !== undefined && user !== "" ) {
                     localStorageService.setItem("userId", user.id);
                 }
