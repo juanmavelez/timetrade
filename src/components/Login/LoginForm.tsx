@@ -9,12 +9,7 @@ import {localStorageService} from "../../services/loclStorageService";
 import {useRouter} from "next/router";
 import {HOME_PAGE} from "../../constants/urls";
 
-type LoginFormProps = {
-    isLogin?: boolean
-}
-
-
-const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
+const LoginForm: FC = () => {
     const router = useRouter();
     const formik = useFormik({
         initialValues: {
