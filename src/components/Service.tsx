@@ -25,7 +25,6 @@ export interface ServiceProps {
 
 
 const Service: FC<ServiceProps> = (props) => {
-    console.log(props)
     const {title, description, id} = props;
     return (
         <Card sx={{maxWidth: 345}}>
