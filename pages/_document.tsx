@@ -26,6 +26,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
+        <script async type="text/javascript" src="/js/newrelic.js" />
       </Head>
       <body>
         <Main />
