@@ -7,7 +7,7 @@ export const validationSchema = yup.object({
         .required('Title is required'),
     description: yup
         .string()
-        .min(8, 'Password should be of minimum 8 characters length')
+        .min(8, 'Description should be of minimum 8 characters length')
         .required('Description is required'),
     isRequest: yup.boolean().required('Please select if you are requesting on offering the service')
 });

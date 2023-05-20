@@ -10,7 +10,6 @@ import {LOGIN_PAGE, SIGNUP_PAGE} from "../src/constants/urls";
 const Login : NextPage = () => {
     return (
         <>
-            <Header></Header>
             <Container maxWidth="lg">
                 <LoginForm></LoginForm>
                 <Typography>

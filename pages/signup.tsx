@@ -9,7 +9,6 @@ import SignUpForm from "../src/components/SignUp/SignUpForm";
 const SignUp : NextPage = () => {
     return (
         <>
-            <Header></Header>
             <Container maxWidth="lg">
                 <SignUpForm></SignUpForm>
                 <Typography>
