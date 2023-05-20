@@ -5,7 +5,7 @@ import ServicesList, {ServicesListProps} from "../src/components/ServicesList";
 import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
 import {GetServerSideProps, NextPage} from "next";
 import type { InferGetServerSidePropsType } from 'next';
-import NewService from "../src/components/NewService/NewService";
+import {HOME_PAGE_ENDPOINT} from "../src/constants/endpoints";
 
 type HomePage = {
     lists?: Array<ServicesListProps>;
@@ -22,7 +22,6 @@ const Home : NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = 
                   return(<ServicesList {...list}></ServicesList>)
               })}
               <ProfileCard ></ProfileCard>
-              <NewService></NewService>
           </Container>
       </>
   );
@@ -32,10 +31,18 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps<HomePage> = async () => {
     try {
-        const res = await fetch('https://api.github.com/repos/vercel/next.js');
+        const res = await fetch(HOME_PAGE_ENDPOINT, {
+            credentials: "include",
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
         const lists = await res.json();
+        console.log(lists)
         return { props: { lists } };
     } catch (err) {
+        console.log("error",err)
         return { props: {}};
     }
 

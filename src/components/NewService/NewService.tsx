@@ -17,8 +17,6 @@ const NewService: FC = () => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            //todo implement endpoint
-            console.log(values);
         },
     });
 

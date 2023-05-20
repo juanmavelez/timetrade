@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
-import {loginEndpoint} from "../../constants/endpoints";
+import {LOGIN_ENDPOINT} from "../../constants/endpoints";
 
 type LoginFormProps = {
     isLogin?: boolean
@@ -19,10 +19,9 @@ const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            //TODO send data to server
             try {
                 const base64 = btoa(values.email + ':' + values.password);
-                const loginFetch = await fetch(loginEndpoint, {
+                const loginFetch = await fetch(LOGIN_ENDPOINT, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
