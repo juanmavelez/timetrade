@@ -22,7 +22,6 @@ const Home : NextPage = () =>{
               {data.lists!== undefined && data.lists.length > 0 && data.lists.map((list: ServicesListProps) => {
                  return(<ServicesList key={list.title} {...list}></ServicesList>)
               })}
-              <ProfileCard ></ProfileCard>
           </Container>
       </>
     )

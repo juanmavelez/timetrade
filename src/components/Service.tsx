@@ -3,20 +3,29 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {FC} from "react";
 import Link from "./Link";
 import {SERVICE_PAGE} from "../constants/urls";
 
-export interface ServiceProps {
-    name: string;
-    description: string;
+export interface User {
     id: string;
+    firstname: string;
+    lastname: string;
 }
 
+
+export interface ServiceProps {
+    title: string;
+    service_type: "offered" | "requested";
+    description: string;
+    id: string;
+    user: User;
+}
+
+
 const Service: FC<ServiceProps> = (props) => {
-    const {name, description, id} = props;
+    const {title, description, id} = props;
     return (
         <Card sx={{maxWidth: 345}}>
             <CardMedia
@@ -27,7 +36,7 @@ const Service: FC<ServiceProps> = (props) => {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {name}
+                    {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {description}
