@@ -17,7 +17,7 @@ export interface ServiceProps {
 const Service: FC<ServiceProps> = (props) => {
     const {name, description, serviceUrl} = props;
     return(
-    <Link href={serviceUrl}>
+    <Link href={serviceUrl ?? ""}>
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
                 sx={{ height: 140 }}

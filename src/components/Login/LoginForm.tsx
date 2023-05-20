@@ -4,7 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
-import {LOGIN_ENDPOINT} from "../../constants/endpoints";
+import {LOCAL_LOGIN_ENDPOINT} from "../../constants/endpoints";
+import {localStorageService} from "../../services/loclStorageService";
+import {useRouter} from "next/router";
+import {HOME_PAGE} from "../../constants/urls";
 
 type LoginFormProps = {
     isLogin?: boolean
@@ -12,6 +15,7 @@ type LoginFormProps = {
 
 
 const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
+    const router = useRouter();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -21,20 +25,20 @@ const LoginForm: FC<LoginFormProps> = ({isLogin = false}) => {
         onSubmit: async (values) => {
             try {
                 const base64 = btoa(values.email + ':' + values.password);
-                const loginFetch = await fetch(LOGIN_ENDPOINT, {
+                const loginFetch = await fetch(LOCAL_LOGIN_ENDPOINT, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Basic ' + base64
                     }
                 })
-                const loginResponse = loginFetch.json();
-                console.log(loginResponse);
+                const loginResponse = await loginFetch.json();
+                const token =  loginResponse.split(' ')[1];
+                localStorageService.setItem('Bearer', token);
+                void router.push(HOME_PAGE);
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
-
-
         },
     });
 

@@ -12,3 +12,7 @@ export const SHOW_SERVICE_ENDPOINT = `${basePath}/services.json`
 
 export const USER_PROFILE_ENDPOINT = `${basePath}/users/show.json`
 
+
+//LOCAL ENDPOINTS
+
+export const LOCAL_LOGIN_ENDPOINT = `api/login`
