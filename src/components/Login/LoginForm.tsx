@@ -5,7 +5,7 @@ import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
 import {LOCAL_LOGIN_ENDPOINT} from "../../constants/endpoints";
-import {localStorageService} from "../../services/loclStorageService";
+import {localStorageService} from "../../services/localStorageService";
 import {useRouter} from "next/router";
 import {HOME_PAGE} from "../../constants/urls";
 

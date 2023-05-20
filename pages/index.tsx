@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import Header from "../src/components/Header/Header";
 import ServicesList, {ServicesListProps} from "../src/components/ServicesList";
 import { NextPage} from "next";
 import useSWR from "swr";
@@ -8,10 +7,6 @@ import {HOME_PAGE_ENDPOINT} from "../src/constants/endpoints";
 import {getBearer} from "../src/utils/getBearer";
 import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
 import {useAuthUser} from "../src/utils/useAuthUser";
-
-type HomePage = {
-    lists?: Array<ServicesListProps>;
-};
 
 const fetcher = (url: string) => fetch(url,{
     headers: {
@@ -22,6 +17,7 @@ const fetcher = (url: string) => fetch(url,{
 
 const Home : NextPage = () =>{
     useAuthUser();
+
     const { data, error, isLoading } = useSWR(HOME_PAGE_ENDPOINT, fetcher);
 
     if (error) return <div>failed to load</div>

@@ -4,7 +4,7 @@ import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
-import {CREATE_SERVICE_ENDPOINT, LOCAL_SIGN_UP} from "../../constants/endpoints";
+import {CREATE_SERVICE_ENDPOINT} from "../../constants/endpoints";
 import {getBearer} from "../../utils/getBearer";
 
 const NewService: FC = () => {
