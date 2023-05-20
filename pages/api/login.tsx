@@ -1,10 +1,10 @@
 import {LOGIN_ENDPOINT} from "../../src/constants/endpoints";
 import {NextApiRequest, NextApiResponse} from "next";
 
-export default async (
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<unknown>
-) => {
+): Promise<void> {
     if (req.method === 'POST') {
         try {
             const backendRes = await fetch(LOGIN_ENDPOINT, {
