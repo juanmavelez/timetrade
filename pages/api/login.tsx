@@ -7,7 +7,6 @@ export default async (
 ) => {
     if (req.method === 'POST') {
         try {
-            // Forward the request to the backend
             const backendRes = await fetch(LOGIN_ENDPOINT, {
                 method: 'POST',
                 headers: {
@@ -17,7 +16,11 @@ export default async (
             });
 
             const authJWT = backendRes.headers.get('authorization');
-            const body = authJWT ?? ""
+            const backendResBody = await backendRes.json();
+            const body = JSON.stringify({
+                token: authJWT,
+                user: backendResBody
+            })
 
             res.status(backendRes.status).json(body);
         } catch (error: unknown) {

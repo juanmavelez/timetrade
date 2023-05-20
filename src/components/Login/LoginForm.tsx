@@ -27,10 +27,22 @@ const LoginForm: FC = () => {
                         'Authorization': 'Basic ' + base64
                     }
                 })
-                const loginResponse = await loginFetch.json();
-                const token =  loginResponse.split(' ')[1];
-                localStorageService.setItem('Bearer', token);
-                void router.push(HOME_PAGE);
+                const loginResponse = await loginFetch.json()
+                const parsedResponse = JSON.parse(loginResponse);
+                const user = parsedResponse.user;
+                const bearerToken = parsedResponse.token
+
+                console.log("user", user, "bearer", bearerToken);
+
+                if(user !== undefined && user !== "" ) {
+                    localStorageService.setItem("userId", user.id);
+                }
+
+                if(bearerToken !== undefined && bearerToken !== "") {
+                    const token =  bearerToken.split(' ')[1];
+                    localStorageService.setItem('Bearer', token);
+                    void router.push(HOME_PAGE);
+                }
             } catch (error) {
                 console.error(error);
             }
