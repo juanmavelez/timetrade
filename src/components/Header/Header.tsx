@@ -14,10 +14,14 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {PAGES, settings} from "./constants";
 import Link from "next/link";
+import {requestLogout} from "../../utils/requests/requestLogout";
+import {LOGIN_PAGE} from "../../constants/urls";
+import {useRouter} from "next/router";
 
 const Header: React.FC = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const router = useRouter();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -148,8 +152,14 @@ const Header: React.FC = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                <MenuItem key={setting} onClick={async () => {
+                                    handleCloseUserMenu();
+                                    const logout = await requestLogout();
+                                    if (logout) {
+                                        router.push(LOGIN_PAGE);
+                                    }
+                                }}>
+                                        <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

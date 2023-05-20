@@ -5,4 +5,4 @@ type page = {
     url: string
 }
 export const PAGES: Array<page> = [{name: 'Home', url: HOME_PAGE }, {name: 'New Service', url: NEW_SERVICE_PAGE}];
-export const settings = ['Profile', 'Logout'];
+export const settings = ['Logout'];
