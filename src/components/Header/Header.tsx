@@ -130,7 +130,6 @@ const Header: React.FC = () => {
                         ))}
                     </Box>
 
-                    {isAuthenticated() &&
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu}
@@ -168,7 +167,6 @@ const Header: React.FC = () => {
                                 ))}
                             </Menu>
                         </Box>
-                    }
                 </Toolbar>
             </Container>
         </AppBar>
