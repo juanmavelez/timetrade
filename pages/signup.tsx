@@ -1,5 +1,4 @@
 import {NextPage} from "next";
-import Header from "../src/components/Header/Header";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "../src/components/Link";

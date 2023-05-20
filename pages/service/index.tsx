@@ -7,7 +7,6 @@ import {useAuthUser} from "../../src/utils/useAuthUser";
 
 const CreateService : NextPage= () =>{
     useAuthUser();
-
     return (
         <Container>
             <NewService></NewService>
