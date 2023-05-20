@@ -4,7 +4,7 @@ import {isAuthenticated} from "./isAuthenticated";
 
 export const useAuthUser = () => {
     const router = useRouter();
-    if(isAuthenticated()){
+    if(!isAuthenticated()){
         if(typeof window !== 'undefined'){
             void router.push(LOGIN_PAGE);
         }
