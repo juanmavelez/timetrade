@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {pages, settings} from "./constants";
-
+import {PAGES, settings} from "./constants";
+import Link from "next/link";
 
 const Header: React.FC = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -86,9 +86,9 @@ const Header: React.FC = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            {PAGES.map((page) => (
+                                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                                    <Link href={page.url}><Typography textAlign="center">{page.name}</Typography></Link>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -113,14 +113,15 @@ const Header: React.FC = () => {
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
+                        {PAGES.map((page) => (
+
+                            <Link
+                                href={page.url}
+                                key={page.name}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
-                            </Button>
+                                {page.name}
+                            </Link>
                         ))}
                     </Box>
 
