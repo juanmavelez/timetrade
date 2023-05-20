@@ -19,7 +19,7 @@ export interface ServicesListProps {
             </Typography>
             <Grid container spacing={2}>
                 {services_list.map((service) => {
-                    return(<Grid item>
+                    return(<Grid key={service.id} item>
                         <Service {...service}></Service>
                     </Grid>)})
                 }

@@ -5,16 +5,16 @@
  */
 export const localStorageService = {
     // Get an item from local storage
-    getItem(key: string): boolean | string | null {
+    getItem(key: string):  string | null {
         if (!this.isLocalStorageAvailable()) {
-            return false;
+            return null;
         }
 
         try {
             return localStorage.getItem(key);
         } catch (error) {
             console.error(error);
-            return false;
+            return null;
         }
     },
 

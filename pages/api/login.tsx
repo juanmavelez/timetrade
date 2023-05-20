@@ -1,13 +1,12 @@
 import {LOGIN_ENDPOINT} from "../../src/constants/endpoints";
 import {NextApiRequest, NextApiResponse} from "next";
 
-export default async (
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<unknown>
-) => {
+): Promise<void> {
     if (req.method === 'POST') {
         try {
-            // Forward the request to the backend
             const backendRes = await fetch(LOGIN_ENDPOINT, {
                 method: 'POST',
                 headers: {
@@ -17,7 +16,11 @@ export default async (
             });
 
             const authJWT = backendRes.headers.get('authorization');
-            const body = authJWT ?? ""
+            const backendResBody = await backendRes.json();
+            const body = JSON.stringify({
+                token: authJWT,
+                user: backendResBody
+            })
 
             res.status(backendRes.status).json(body);
         } catch (error: unknown) {

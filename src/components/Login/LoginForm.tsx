@@ -5,7 +5,7 @@ import { FC } from "react";
 import Container from '@mui/material/Container';
 import {validationSchema} from "./validationSchema";
 import {LOCAL_LOGIN_ENDPOINT} from "../../constants/endpoints";
-import {localStorageService} from "../../services/loclStorageService";
+import {localStorageService} from "../../services/localStorageService";
 import {useRouter} from "next/router";
 import {HOME_PAGE} from "../../constants/urls";
 
@@ -27,10 +27,22 @@ const LoginForm: FC = () => {
                         'Authorization': 'Basic ' + base64
                     }
                 })
-                const loginResponse = await loginFetch.json();
-                const token =  loginResponse.split(' ')[1];
-                localStorageService.setItem('Bearer', token);
-                void router.push(HOME_PAGE);
+                const loginResponse = await loginFetch.json()
+                const parsedResponse = JSON.parse(loginResponse);
+                const user = parsedResponse.user;
+                const bearerToken = parsedResponse.token
+
+                console.log("user", user, "bearer", bearerToken);
+
+                if(user !== undefined && user !== "" ) {
+                    localStorageService.setItem("userId", user.id);
+                }
+
+                if(bearerToken !== undefined && bearerToken !== "") {
+                    const token =  bearerToken.split(' ')[1];
+                    localStorageService.setItem('Bearer', token);
+                    void router.push(HOME_PAGE);
+                }
             } catch (error) {
                 console.error(error);
             }

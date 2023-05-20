@@ -1,3 +1,3 @@
 import {localStorageService} from "../services/localStorageService";
 
-export const getBearer = () =>  localStorageService.getItem('Bearer')
+export const getUserId = () => localStorageService.getItem('userId');

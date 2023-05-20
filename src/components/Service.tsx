@@ -5,22 +5,22 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { FC } from "react";
+import {FC} from "react";
 import Link from "./Link";
+import {SERVICE_PAGE} from "../constants/urls";
 
 export interface ServiceProps {
-    serviceUrl: string;
     name: string;
     description: string;
+    id: string;
 }
 
 const Service: FC<ServiceProps> = (props) => {
-    const {name, description, serviceUrl} = props;
-    return(
-    <Link href={serviceUrl ?? ""}>
-        <Card sx={{ maxWidth: 345 }}>
+    const {name, description, id} = props;
+    return (
+        <Card sx={{maxWidth: 345}}>
             <CardMedia
-                sx={{ height: 140 }}
+                sx={{height: 140}}
                 max-width={360}
                 image="/static/images/cards/contemplative-reptile.jpg"
                 title="green iguana"
@@ -34,11 +34,9 @@ const Service: FC<ServiceProps> = (props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Compartir</Button>
-                <Button size="small">Leer más</Button>
+                <Link href={`${SERVICE_PAGE}${id}`}>Leer más</Link>
             </CardActions>
         </Card>
-    </Link>
     );
 }
 
