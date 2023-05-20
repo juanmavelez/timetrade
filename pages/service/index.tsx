@@ -5,19 +5,17 @@ import NewService from "../../src/components/NewService/NewService";
 import {useAuthUser} from "../../src/utils/useAuthUser";
 
 
-const Service : NextPage= () =>{
+const CreateService : NextPage= () =>{
     useAuthUser();
 
     return (
-        <>
-            <Container>
-                <NewService></NewService>
-            </Container>
-        </>
+        <Container>
+            <NewService></NewService>
+        </Container>
     );
 }
 
-export default Service;
+export default CreateService;
 
 
 
