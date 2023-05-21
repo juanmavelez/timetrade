@@ -9,8 +9,10 @@ const SignUp : NextPage = () => {
     return (
         <>
             <Container maxWidth="lg">
+                <Typography variant="h3" component="h1" mt={2} textAlign={"center"}>Crear cuenta</Typography>
+                <Typography variant="subtitle1" mt={2} textAlign={"center"}>Y empieza a mejorar el mundo</Typography>
                 <SignUpForm></SignUpForm>
-                <Typography>
+                <Typography variant="body1" mt={2} textAlign={"center"}>
                     Ya tienes una cuenta? <Link href={LOGIN_PAGE}>Haz login!</Link>
                 </Typography>
             </Container>

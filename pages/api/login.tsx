@@ -8,7 +8,7 @@ export default async function handler(
     if (req.method === 'POST') {
         try {
             const backendRes = await fetch(LOGIN_ENDPOINT, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Authorization': req.headers.authorization ?? "",
                     'Content-Type': 'application/json',
@@ -16,7 +16,9 @@ export default async function handler(
             });
 
             const authJWT = backendRes.headers.get('authorization');
+            console.log("backendRes", backendRes,"authJWT" ,authJWT);
             const backendResBody = await backendRes.json();
+            console.log("backendResBody", backendResBody)
             const body = JSON.stringify({
                 token: authJWT,
                 user: backendResBody
