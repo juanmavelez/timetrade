@@ -27,7 +27,7 @@ const NewService: FC = () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        user: {
+                        service: {
                             title: values.title,
                             description: values.description,
                             isRequest: values.isRequest,
