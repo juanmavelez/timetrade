@@ -7,6 +7,8 @@ import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
 import ServicesList from "../src/components/ServicesList";
 import {Container, Divider} from "@mui/material";
 import {useErrorRedirection} from "../src/utils/useErrorRedirection";
+import Head from "next/head";
+import * as React from "react";
 
 const Profile: NextPage = () => {
     useAuthUser();
@@ -16,7 +18,10 @@ const Profile: NextPage = () => {
     if (isLoading) return <div>loading...</div>
 
     return (
-
+<>
+    <Head>
+        <title>{`Perfil | TimeTrade`}</title>
+    </Head>
         <Container maxWidth="lg" sx={{paddingBottom: "3rem"}}>
             {data.user !== undefined &&
                 <>
@@ -36,6 +41,7 @@ const Profile: NextPage = () => {
                 </>
             }
         </Container>
+</>
     )
 }
 export default Profile;

@@ -6,6 +6,8 @@ import {HOME_PAGE_ENDPOINT} from "../src/constants/endpoints";
 import {useAuthUser} from "../src/utils/useAuthUser";
 import {fetcher} from "../src/fetcher";
 import {useErrorRedirection} from "../src/utils/useErrorRedirection";
+import Head from "next/head";
+import * as React from "react";
 
 const Home : NextPage = () =>{
     useAuthUser();
@@ -17,6 +19,9 @@ const Home : NextPage = () =>{
 
     return (
      <>
+         <Head>
+             <title>{`Home | TimeTrade`}</title>
+         </Head>
           <Container maxWidth="lg" sx={{marginTop: "3rem"}}>
               {data.lists!== undefined && data.lists.length > 0 && data.lists.map((list: ServicesListProps) => {
                  return(
