@@ -16,8 +16,6 @@ export interface ServicesListProps {
             sx={{
                 display:"grid",
                 gap:"1rem",
-                paddingTop: "2rem",
-                paddingBottom: "2rem"
         }}>
             <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>
                 {title}

@@ -16,11 +16,11 @@ const Home : NextPage = () =>{
 
     return (
      <>
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" sx={{marginTop: "3rem"}}>
               {data.lists!== undefined && data.lists.length > 0 && data.lists.map((list: ServicesListProps) => {
                  return(
                      <>
-                         <Divider />
+                         {list!==data.lists[0] && <Divider sx={{marginTop: "2rem", marginBottom: "2rem"}} />}
                          <ServicesList key={list.title} {...list}></ServicesList>
                      </>
 

@@ -8,7 +8,7 @@ import SignUpForm from "../src/components/SignUp/SignUpForm";
 const SignUp : NextPage = () => {
     return (
         <>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{marginTop: "3rem"}}>
                 <Typography variant="h3" component="h1" mt={2} textAlign={"center"}>Crear cuenta</Typography>
                 <Typography variant="subtitle1" mt={2} textAlign={"center"}>Y empieza a mejorar el mundo</Typography>
                 <SignUpForm></SignUpForm>

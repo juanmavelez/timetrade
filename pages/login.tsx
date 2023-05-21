@@ -6,7 +6,7 @@ import {SIGNUP_PAGE} from "../src/constants/urls";
 
 const Login: NextPage = () => {
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{marginTop: "3rem"}}>
             <Typography variant="h3" component="h1" mt={2} textAlign={"center"} sx={{fontWeight: "bold"}}>Login</Typography>
             <Typography variant="subtitle1" mt={2} textAlign={"center"}>Y continua mejorando el mundo</Typography>
             <LoginForm></LoginForm>
