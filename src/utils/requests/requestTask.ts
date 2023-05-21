@@ -7,7 +7,7 @@ import {getBearer} from "../getBearer";
  */
 export const requestTask = async (serviceId: string): Promise<boolean> => {
     try {
-        const response = await fetch(REQUEST_TASK_ENDPOINT, {
+        const response = await fetch(REQUEST_TASK_ENDPOINT(serviceId), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,7 +15,6 @@ export const requestTask = async (serviceId: string): Promise<boolean> => {
             },
             body: JSON.stringify({
                 task: {
-                    service_id: serviceId,
                     time: "1",
                 }
             })
