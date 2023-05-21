@@ -49,7 +49,7 @@ const Service : NextPage= () =>{
                 }
             </Grid>
 
-            {isOwner &&
+            {!isOwner &&
                 <Button
                     disabled={requested}
                     onClick={async () => {
