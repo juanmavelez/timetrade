@@ -8,7 +8,7 @@ export default async function handler(
     if (req.method === 'POST') {
         try {
             const backendRes = await fetch(LOGIN_ENDPOINT, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Authorization': req.headers.authorization ?? "",
                     'Content-Type': 'application/json',
