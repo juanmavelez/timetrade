@@ -6,14 +6,14 @@ import {fetcher} from "../src/fetcher";
 import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
 import ServicesList from "../src/components/ServicesList";
 import {Container, Divider} from "@mui/material";
+import {useErrorRedirection} from "../src/utils/useErrorRedirection";
 
 const Profile: NextPage = () => {
     useAuthUser();
-
+    const handleError = useErrorRedirection();
     const {data, error, isLoading} = useSWR(USER_PROFILE_ENDPOINT, fetcher);
-
+    handleError(error);
     if (isLoading) return <div>loading...</div>
-    if (error) return <div>error...</div>
 
     return (
 

@@ -2,7 +2,16 @@ import { useFormik } from 'formik';
 import { FC } from "react";
 import {validationSchema} from "./validationSchema";
 import {useRouter} from "next/router";
-import { TextField, Button, Container, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import {
+    TextField,
+    Button,
+    Container,
+    FormControl,
+    FormLabel,
+    RadioGroup,
+    FormControlLabel,
+    Radio
+} from '@mui/material';
 import {LOCAL_SIGN_UP} from "../../constants/endpoints";
 import {HOME_PAGE} from "../../constants/urls";
 import {localStorageService} from "../../services/localStorageService";
