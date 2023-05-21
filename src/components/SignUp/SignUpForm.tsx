@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { FC } from "react";
 import {validationSchema} from "./validationSchema";
 import {useRouter} from "next/router";
-import { TextField, Button, Container, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { TextField, Button, Container, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import {LOCAL_SIGN_UP} from "../../constants/endpoints";
 import {HOME_PAGE} from "../../constants/urls";
 import {localStorageService} from "../../services/localStorageService";
@@ -54,9 +54,10 @@ const SignUpForm: FC = () => {
     });
 
     return (
-        <Container>
+        <Container maxWidth="sm" sx={{marginTop: "2rem"}}>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="firstname"
                     name="firstname"
@@ -67,6 +68,7 @@ const SignUpForm: FC = () => {
                     helperText={formik.touched.firstname && formik.errors.firstname}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="lastname"
                     name="lastname"
@@ -77,6 +79,7 @@ const SignUpForm: FC = () => {
                     helperText={formik.touched.lastname && formik.errors.lastname}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="birthday"
                     name="birthday"
@@ -90,7 +93,10 @@ const SignUpForm: FC = () => {
                     error={formik.touched.birthday && Boolean(formik.errors.birthday)}
                     helperText={formik.touched.birthday && formik.errors.birthday}
                 />
-                <FormControl component="fieldset">
+                <FormControl
+                    component="fieldset"
+                    margin="normal"
+                >
                     <FormLabel component="legend">Gender</FormLabel>
                     <RadioGroup row aria-label="gender" name="gender" value={formik.values.gender} onChange={formik.handleChange}>
                         <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -103,12 +109,14 @@ const SignUpForm: FC = () => {
                     id="email"
                     name="email"
                     label="Email"
+                    type="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
                     helperText={formik.touched.email && formik.errors.email}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="password"
                     name="password"
@@ -120,6 +128,7 @@ const SignUpForm: FC = () => {
                     helperText={formik.touched.password && formik.errors.password}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="passwordConfirmation"
                     name="passwordConfirmation"
@@ -130,7 +139,7 @@ const SignUpForm: FC = () => {
                     error={formik.touched.passwordConfirmation && Boolean(formik.errors.passwordConfirmation)}
                     helperText={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
                 />
-                <Button color="primary" variant="contained" fullWidth type="submit">
+                <Button color="primary" variant="contained" fullWidth type="submit" sx={{display: "grid", mt: "2rem"}}>
                     Submit
                 </Button>
             </form>

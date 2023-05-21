@@ -1,8 +1,6 @@
-import { useFormik } from 'formik';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { FC } from "react";
-import Container from '@mui/material/Container';
+import {useFormik} from 'formik';
+import {Button, Container, TextField} from '@mui/material';
+import {FC} from "react";
 import {validationSchema} from "./validationSchema";
 import {LOCAL_LOGIN_ENDPOINT} from "../../constants/endpoints";
 import {localStorageService} from "../../services/localStorageService";
@@ -28,16 +26,17 @@ const LoginForm: FC = () => {
                     }
                 })
                 const loginResponse = await loginFetch.json()
+                console.log(loginResponse)
                 const parsedResponse = JSON.parse(loginResponse);
                 const user = parsedResponse.user;
                 const bearerToken = parsedResponse.token
 
-                if(user !== undefined && user !== "" ) {
+                if (user !== undefined && user !== "") {
                     localStorageService.setItem("userId", user.id);
                 }
 
-                if(bearerToken !== undefined && bearerToken !== "") {
-                    const token =  bearerToken.split(' ')[1];
+                if (bearerToken !== undefined && bearerToken !== "") {
+                    const token = bearerToken.split(' ')[1];
                     localStorageService.setItem('Bearer', token);
                     void router.push(HOME_PAGE);
                 }
@@ -48,9 +47,10 @@ const LoginForm: FC = () => {
     });
 
     return (
-        <Container>
+        <Container maxWidth="sm" sx={{marginTop: "1rem"}}>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="email"
                     name="email"
@@ -61,6 +61,7 @@ const LoginForm: FC = () => {
                     helperText={formik.touched.email && formik.errors.email}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="password"
                     name="password"
@@ -71,7 +72,7 @@ const LoginForm: FC = () => {
                     error={formik.touched.password && Boolean(formik.errors.password)}
                     helperText={formik.touched.password && formik.errors.password}
                 />
-                <Button color="primary" variant="contained" fullWidth type="submit">
+                <Button color="primary" fullWidth variant="contained" type="submit" sx={{display: "grid", mt: "2rem"}}>
                     Submit
                 </Button>
             </form>
