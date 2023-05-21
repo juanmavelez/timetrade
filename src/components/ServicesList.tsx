@@ -3,12 +3,14 @@ import Service, {ServiceProps} from "./Service";
 import {FC} from "react";
 import Link from "./Link";
 import {PROFILE_PAGE} from "../constants/urls";
+import {getFirstNElements} from "../utils/getFirstNelementsArray";
 
 export interface ServicesListProps {
    services_list: Array<ServiceProps>;
    title: string;
 }
 
+const MAX_NUMBER_ELEMENTS_IN_LIST = 8;
  const ServicesList: FC<ServicesListProps> = (props) => {
     const {services_list, title} = props;
     return (
@@ -24,8 +26,8 @@ export interface ServicesListProps {
                 container
                 spacing={{ xs: 2, md: 3 }}
             >
-                {services_list?.length > 1  && services_list.map((service) => {
-                    return(<Grid key={service.id} item xs={12} sm={3} md={4} >
+                {services_list?.length > 1  && getFirstNElements(services_list ,MAX_NUMBER_ELEMENTS_IN_LIST).map((service) => {
+                    return(<Grid key={service.id} item xs={12} sm={6} md={4} >
                         <Service {...service}></Service>
                     </Grid>)})
                 }
