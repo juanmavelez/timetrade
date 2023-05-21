@@ -1,28 +1,18 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import {AppBar,Box, Toolbar, IconButton, Typography, Tooltip, MenuItem, Container, Avatar, Menu } from '@mui/material';
 import {PAGES, settings} from "./constants";
-import Link from "next/link";
+import MenuIcon from '@mui/icons-material/Menu';
 import {requestLogout} from "../../utils/requests/requestLogout";
 import {LOGIN_PAGE} from "../../constants/urls";
 import {useRouter} from "next/router";
 import {isAuthenticated} from "../../utils/isAuthenticated";
+import Link from "../Link";
 
 const Header: React.FC = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const router = useRouter();
-
+    const isAuth = isAuthenticated();
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -41,10 +31,9 @@ const Header: React.FC = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" color="transparent">
             <Container>
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -94,12 +83,11 @@ const Header: React.FC = () => {
                         >
                             {PAGES.map((page) => (
                                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                                    <Link href={page.url}><Typography textAlign="center">{page.name}</Typography></Link>
+                                    <Link noLinkStyle href={page.url}><Typography textAlign="center">{page.name}</Typography></Link>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
                     <Typography
                         variant="h5"
                         noWrap
@@ -116,11 +104,12 @@ const Header: React.FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        TIMETRADE
                     </Typography>
-                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
+                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, gap: '1rem', marginLeft: '2rem'}}>
                         {PAGES.map((page) => (
                             <Link
+                                sx={{color: 'inherit', textDecoration: 'none'}}
                                 href={page.url}
                                 key={page.name}
                                 onClick={handleCloseNavMenu}
@@ -132,9 +121,10 @@ const Header: React.FC = () => {
 
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu}
-                                            sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                <IconButton
+                                    onClick={handleOpenUserMenu}
+                                    sx={{p: 0}}>
+                                        <Avatar alt="Avatar icon"/>
                                 </IconButton>
                             </Tooltip>
 

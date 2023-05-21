@@ -4,7 +4,6 @@ import Container from "@mui/material/Container";
 import NewService from "../../src/components/NewService/NewService";
 import {useAuthUser} from "../../src/utils/useAuthUser";
 
-
 const CreateService : NextPage= () =>{
     useAuthUser();
     return (

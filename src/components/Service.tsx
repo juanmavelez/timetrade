@@ -46,7 +46,6 @@ const Service: FC<ServiceProps> = (props) => {
                     '-webkit-line-clamp': "3",
                     '-webkit-box-orient': 'vertical',
                     overflow: "hidden",
-                    fontWeight: "medium"
                 }}>
                     {title}
                 </Typography>
