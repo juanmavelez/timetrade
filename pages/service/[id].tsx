@@ -25,8 +25,6 @@ const Service: NextPage = () => {
 
     const userId = getUserId();
     const myTasks = getMyTasksFromTasks(data?.tasks, userId);
-    console.log("userId", userId)
-    console.log(data)
 
     const isOwner = userId === data?.supplier_id || userId === data?.beneficiary_id;
     const isShowButton = !isOwner && myTasks !== undefined && myTasks.length === 0
