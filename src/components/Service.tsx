@@ -1,19 +1,14 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import {CardActions, Card, CardContent, CardMedia, Typography} from '@mui/material';
 import {FC} from "react";
 import Link from "./Link";
 import {SERVICE_PAGE} from "../constants/urls";
+import {getImage} from "../utils/getImage";
 
 export interface User {
     id: string;
     firstname: string;
     lastname: string;
 }
-
 
 export interface ServiceProps {
     title: string;
@@ -24,25 +19,54 @@ export interface ServiceProps {
 }
 
 
+
 const Service: FC<ServiceProps> = (props) => {
     const {title, description, id} = props;
+    const image = getImage();
     return (
-        <Card sx={{maxWidth: 345}}>
+        <Card sx={{maxWidth: "375px",
+            boxShadow:"none",
+            display: "grid",
+            height: "100%",
+            gridAutoRows: "140px auto max-content",
+        }}>
             <CardMedia
                 sx={{height: 140}}
                 max-width={360}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
+                image={`/images/${image.name}`}
+                title={image.alt}
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+            <CardContent sx={{borderLeft: "0.25px solid #2b2b2b", borderRight: "0.25px solid #2b2b2b" }}>
+                <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                    sx={{
+                    display: '-webkit-box',
+                    '-webkit-line-clamp': "3",
+                    '-webkit-box-orient': 'vertical',
+                    overflow: "hidden",
+                    fontWeight: "medium"
+                }}>
                     {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary"
+                    sx={{
+                    display: '-webkit-box',
+                    '-webkit-line-clamp': "4",
+                    '-webkit-box-orient': 'vertical',
+                    overflow: 'hidden'
+                }}>
                     {description}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions
+                sx={{
+                    border: "0.25px solid #2b2b2b",
+                    borderRadius: " 0 0 4px 4px",
+                    borderTop: "none",
+                    padding: "1rem"
+            }}>
                 <Link href={`${SERVICE_PAGE}${id}`}>Leer más</Link>
             </CardActions>
         </Card>

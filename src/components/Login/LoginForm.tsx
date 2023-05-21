@@ -26,7 +26,6 @@ const LoginForm: FC = () => {
                     }
                 })
                 const loginResponse = await loginFetch.json()
-                console.log(loginResponse)
                 const parsedResponse = JSON.parse(loginResponse);
                 const user = parsedResponse.user;
                 const bearerToken = parsedResponse.token
