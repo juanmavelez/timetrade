@@ -6,8 +6,10 @@ export const useErrorRedirection = () => {
 
     return (error: unknown) => {
         if (error !== undefined || error !== null) {
+            if(typeof window !== "undefined"){
+                void router.push(ERROR_PAGE);
+            }
             console.error(error);
-            void router.push(ERROR_PAGE);
         }
     };
 }
