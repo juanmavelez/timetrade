@@ -15,14 +15,14 @@ const Service : NextPage= () =>{
     useAuthUser();
     const handleError = useErrorRedirection();
     const [requested, setRequested] = React.useState(false);
+
+    const router = useRouter();
     const serviceId = router.query.id;
 
     const { data, error, isLoading } = useSWR(`${SHOW_SERVICE_ENDPOINT}${serviceId}.json`, fetcher);
     handleError(error);
 
-    const router = useRouter();
     const userId = getUserId();
-
 
 
     const isOwner = userId === data?.supplier_id || userId === data?.beneficiary_id;
