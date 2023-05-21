@@ -26,7 +26,8 @@ const MAX_NUMBER_ELEMENTS_IN_LIST = 8;
                 container
                 spacing={{ xs: 2, md: 3 }}
             >
-                {services_list?.length > 1  && getFirstNElements(services_list ,MAX_NUMBER_ELEMENTS_IN_LIST).map((service) => {
+                {services_list?.length > 1  &&
+                    getFirstNElements(services_list ,MAX_NUMBER_ELEMENTS_IN_LIST).map((service) => {
                     return(<Grid key={service.id} item xs={12} sm={6} md={4} >
                         <Service {...service}></Service>
                     </Grid>)})
