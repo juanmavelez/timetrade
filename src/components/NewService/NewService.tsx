@@ -1,9 +1,7 @@
-import { useFormik } from 'formik';
-import Button from '@material-ui/core/Button';
-import { FC } from "react";
-import Container from '@mui/material/Container';
+import {useFormik} from 'formik';
+import {FC} from "react";
 import {validationSchema} from "./validationSchema";
-import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
+import {Button, Checkbox, Container, FormLabel, TextField, Typography,} from '@mui/material';
 import {CREATE_SERVICE_ENDPOINT} from "../../constants/endpoints";
 import {getBearer} from "../../utils/getBearer";
 import {responseSchema} from "./responseSchema";
@@ -36,16 +34,17 @@ const NewService: FC = () => {
                         }
                     })
                 });
-                if(response.ok) {
-                    const responseValue =  await response.json();
+
+                if (response.ok) {
+                    const responseValue = await response.json();
                     const isValidSchema = await responseSchema.isValid(responseValue);
-                    if(isValidSchema){
+                    if (isValidSchema) {
                         void router.push(`${SERVICE_PAGE}${responseValue.id}`)
-                    } else{
-                    console.error("Wrong schema returned when creating a service");
+                    } else {
+                        console.error("Wrong schema returned when creating a service");
                     }
                 }
-            }catch (e) {
+            } catch (e) {
                 console.error(e)
             }
 
@@ -53,9 +52,10 @@ const NewService: FC = () => {
     });
 
     return (
-        <Container>
+        <Container maxWidth="sm" sx={{marginTop: "2rem"}}>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="title"
                     name="title"
@@ -66,6 +66,7 @@ const NewService: FC = () => {
                     helperText={formik.touched.title && formik.errors.title}
                 />
                 <TextField
+                    margin="normal"
                     fullWidth
                     id="description"
                     name="description"
@@ -77,9 +78,12 @@ const NewService: FC = () => {
                     helperText={formik.touched.description && formik.errors.description}
                 />
 
-                <FormControlLabel control={<Checkbox onChange={formik.handleChange}/>} label="Busco este servicio" />
+                <FormLabel sx={{display: "flex", alignItems: "center"}}>
+                    <Typography variant="body1">Busco este servicio</Typography>
+                    <Checkbox onChange={formik.handleChange}/>
+                </FormLabel>
 
-                <Button color="primary" variant="contained" fullWidth type="submit">
+                <Button color="primary" variant="contained" fullWidth type="submit" sx={{display: "grid", mt: "2rem"}}>
                     Submit
                 </Button>
             </form>

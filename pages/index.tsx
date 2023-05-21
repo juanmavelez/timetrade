@@ -5,14 +5,15 @@ import useSWR from "swr";
 import {HOME_PAGE_ENDPOINT} from "../src/constants/endpoints";
 import {useAuthUser} from "../src/utils/useAuthUser";
 import {fetcher} from "../src/fetcher";
+import {useErrorRedirection} from "../src/utils/useErrorRedirection";
 
 const Home : NextPage = () =>{
     useAuthUser();
-
+    const handleError = useErrorRedirection();
     const { data, error, isLoading } = useSWR(HOME_PAGE_ENDPOINT, fetcher);
+    handleError(error);
 
     if (isLoading) return <div>loading...</div>
-    if (error) return <div>error...</div>
 
     return (
      <>

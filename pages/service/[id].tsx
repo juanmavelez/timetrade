@@ -9,20 +9,24 @@ import {fetcher} from "../../src/fetcher";
 import {getUserId} from "../../src/utils/getUserId";
 import {requestTask} from "../../src/utils/requests/requestTask";
 import { PROFILE_PAGE} from "../../src/constants/urls";
+import {useErrorRedirection} from "../../src/utils/useErrorRedirection";
 
 const Service : NextPage= () =>{
     useAuthUser();
+    const handleError = useErrorRedirection();
     const [requested, setRequested] = React.useState(false);
 
     const router = useRouter();
-    const userId = getUserId();
-
     const serviceId = router.query.id;
 
-    const { data, error, isLoading } = useSWR(`${SHOW_SERVICE_ENDPOINT}/${serviceId}.json`, fetcher);
+    const { data, error, isLoading } = useSWR(`${SHOW_SERVICE_ENDPOINT}${serviceId}.json`, fetcher);
+    handleError(error);
+
+    const userId = getUserId();
+
+
     const isOwner = userId === data?.supplier_id || userId === data?.beneficiary_id;
 
-    if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
 
     return (
