@@ -5,7 +5,7 @@ export const useErrorRedirection = () => {
     const router = useRouter();
 
     return (error: unknown) => {
-        if (error !== undefined || error !== null) {
+        if (error) {
             if(typeof window !== "undefined"){
                 void router.push(ERROR_PAGE);
             }
