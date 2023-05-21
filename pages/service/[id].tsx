@@ -1,17 +1,14 @@
 import {NextPage} from "next";
 import {useAuthUser} from "../../src/utils/useAuthUser";
-import Container from "@mui/material/Container";
+import {Container,Grid, Typography, Button  } from '@mui/material';
 import * as React from "react";
 import {useRouter} from "next/router";
 import useSWR from "swr";
 import { SHOW_SERVICE_ENDPOINT } from "../../src/constants/endpoints";
 import {fetcher} from "../../src/fetcher";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import {getUserId} from "../../src/utils/getUserId";
-import {Button} from "@mui/material";
 import {requestTask} from "../../src/utils/requests/requestTask";
-import {HOME_PAGE} from "../../src/constants/urls";
+import { PROFILE_PAGE} from "../../src/constants/urls";
 
 const Service : NextPage= () =>{
     useAuthUser();
@@ -56,9 +53,8 @@ const Service : NextPage= () =>{
                         setRequested(true);
                         const id = typeof serviceId === 'string' ? serviceId : serviceId[0];
                         const requested = await requestTask(id);
-                        //TODO redirect to the profile page
                         if(requested){
-                            void router.push(HOME_PAGE);
+                            void router.push(PROFILE_PAGE);
                         }
                         setRequested(false);
                     }

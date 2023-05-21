@@ -1,32 +1,41 @@
-import Grid from '@mui/material/Grid';
-import * as React from 'react';
 import {FC} from 'react';
-import Avatar from '@mui/material/Avatar';
-import {deepOrange} from '@mui/material/colors';
-import {Typography} from "@mui/material";
+import {Avatar, Box, Grid, Typography} from "@mui/material";
 import {User} from "../../interfaces/user.interface";
+import {translateGender} from "./translateGender";
 
 export const ProfileCard: FC<User> = (props) => {
     const {firstname, lastname, email, gender} = props
     return (
         <Grid
             container
-            direction="row"
-            justifyContent="space-evenly"
             alignItems="center"
+            sx={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                marginTop: "3rem",
+                flexDirection: {xs: "column-reverse", md: "row"},
+                gap: "2rem",
+            }}
         >
-            <Grid item xs>
-                {firstname !== undefined && <Typography>Nombre: {firstname}</Typography>}
-                {lastname !== undefined && <Typography>Apellido: {lastname} </Typography>}
-                {email !== undefined && <Typography>Email: {email}</Typography>}
-                {gender !== undefined && <Typography>Genero: {gender} </Typography>}
+            <Grid item>
+                {firstname !== undefined &&
+                    <Typography sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "4rem auto"}}>
+                        Nombre: <Box sx={{fontWeight: "bold", marginLeft: "1rem"}}>{firstname} {lastname}</Box>
+                    </Typography>}
+                {email !== undefined &&
+                    <Typography sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "4rem auto"}}>
+                        Email: <Box sx={{fontWeight: "bold", marginLeft: "1rem"}}>{email}</Box>
+                    </Typography>}
+                {gender !== undefined &&
+                    <Typography sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "4rem auto"}}>
+                        Genero: <Box sx={{fontWeight: "bold", marginLeft: "1rem"}}>{translateGender(gender)}</Box>
+                    </Typography>}
             </Grid>
-            <Grid item xs>
+            <Grid item>
                 <Avatar
-                    sx={{bgcolor: deepOrange[300], height: "150px", width: "150px"}}
+                    sx={{bgcolor: "#388e3c", height: "150px", width: "150px", margin: "0 auto"}}
                     alt="profile avatar picture"
                 >
-                    {firstname[0]}
                 </Avatar>
             </Grid>
         </Grid>

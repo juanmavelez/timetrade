@@ -43,8 +43,8 @@ const Service: FC<ServiceProps> = (props) => {
                     component="div"
                     sx={{
                     display: '-webkit-box',
-                    '-webkit-line-clamp': "3",
-                    '-webkit-box-orient': 'vertical',
+                    webkitLineClamp: "3",
+                    webkitBoxOrient: 'vertical',
                     overflow: "hidden",
                 }}>
                     {title}
