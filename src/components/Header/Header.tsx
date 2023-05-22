@@ -3,7 +3,7 @@ import {AppBar,Box, Toolbar, IconButton, Typography, Tooltip, MenuItem, Containe
 import {PAGES, settings} from "./constants";
 import MenuIcon from '@mui/icons-material/Menu';
 import {requestLogout} from "../../utils/requests/requestLogout";
-import {LOGIN_PAGE} from "../../constants/urls";
+import {HOME_PAGE, LOGIN_PAGE} from "../../constants/urls";
 import {useRouter} from "next/router";
 import {isAuthenticated} from "../../utils/isAuthenticated";
 import Link from "../Link";
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        href={HOME_PAGE}
                         sx={{
                             mr: 2,
                             display: {xs: 'none', md: 'flex'},
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
                         variant="h5"
                         noWrap
                         component="a"
-                        href=""
+                        href="HOME_PAGE"
                         sx={{
                             mr: 2,
                             display: {xs: 'flex', md: 'none'},

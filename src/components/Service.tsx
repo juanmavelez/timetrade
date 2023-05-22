@@ -18,16 +18,16 @@ export interface ServiceProps {
     user: User;
 }
 
-
-
 const Service: FC<ServiceProps> = (props) => {
     const {title, description, id} = props;
     const image = getImage();
     return (
-        <Card sx={{maxWidth: "375px",
+        <Card sx={{
+            minWidth: "320px",
+            overflow: "unset",
+            height: "375px",
             boxShadow:"none",
             display: "grid",
-            height: "100%",
             gridAutoRows: "140px auto max-content",
         }}>
             <CardMedia
