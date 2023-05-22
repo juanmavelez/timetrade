@@ -1,5 +1,5 @@
 import {Container, Divider, Typography} from '@mui/material';
-import ServicesList, {ServicesListProps} from "../src/components/ServicesList";
+import ServicesList, {ServicesListProps} from "../src/components/ServiceLists/ServicesList";
 import { NextPage} from "next";
 import useSWR from "swr";
 import {HOME_PAGE_ENDPOINT} from "../src/constants/endpoints";

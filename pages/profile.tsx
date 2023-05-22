@@ -4,7 +4,7 @@ import {USER_PROFILE_ENDPOINT} from "../src/constants/endpoints";
 import {useAuthUser} from "../src/utils/useAuthUser";
 import {fetcher} from "../src/fetcher";
 import {ProfileCard} from "../src/components/ProfileCard/ProfileCard";
-import ServicesList from "../src/components/ServicesList";
+import ServicesList from "../src/components/ServiceLists/ServicesList";
 import {Box, Container, Divider, Typography} from "@mui/material";
 import {useErrorRedirection} from "../src/utils/useErrorRedirection";
 import Head from "next/head";

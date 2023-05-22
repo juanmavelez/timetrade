@@ -1,8 +1,8 @@
 import {Box, Container, Typography} from '@mui/material';
-import Service, {ServiceProps} from "./Service";
+import Service, {ServiceProps} from "../Service";
 import {FC} from "react";
-import Link from "./Link";
-import {NEW_SERVICE_PAGE} from "../constants/urls";
+import Link from "../Link";
+import {NEW_SERVICE_PAGE} from "../../constants/urls";
 
 export interface ServicesListProps {
    services_list: Array<ServiceProps>;
