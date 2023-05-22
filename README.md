@@ -16,8 +16,7 @@ TimeTrade is an idea made by:
 - https://github.com/Ligator
 
 ## Documentation
-![Screenshot 2023-05-22 at 18.32.24.png](..%2F..%2F..%2FDesktop%2FScreenshot%202023-05-22%20at%2018.32.24.png)
-
+![figjam.png](public%2Ffigjam.png)
 https://www.figma.com/file/Tdz7Lc54BtUhCxgDLCkJCw/TimeTrade?type=whiteboard&t=RrTHLdKMzJbMUfSf-1
 
 
