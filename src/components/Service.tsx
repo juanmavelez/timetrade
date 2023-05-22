@@ -23,7 +23,7 @@ const Service: FC<ServiceProps> = (props) => {
     const image = getImage();
     return (
         <Card sx={{
-            minWidth: "320px",
+            minWidth: "300px",
             maxWidth: "375px",
             overflow: "hidden",
             height: "400px",
