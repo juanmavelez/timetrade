@@ -5,12 +5,14 @@
 This repository represents the frontend of TIMETRADE, 
 it was build for a New relic hackaton organized by Platzi
 
-TimeTrade is an idea made with: 
+TimeTrade is an idea made by: 
 
 - https://github.com/cruzamilcars
 - https://github.com/davepcage 
 - https://github.com/AlfredoJA
 - https://github.com/Ligator
+
+The main propourse of this proyect was to try the different functionalities from new relic, and see them with a running repository
 
 ## How to see it 
 This repository is currently deployed in Vercel in the following url
