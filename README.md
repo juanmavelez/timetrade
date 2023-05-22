@@ -1,44 +1,45 @@
-# Material UI - Next.js example in TypeScript
+# TIME TRADE
 
-## How to use
+## Introduction
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+This repository represents the frontend of TIMETRADE, 
+it was build for a New relic hackaton organized by Platzi
 
-<!-- #default-branch-switch -->
+TimeTrade is an idea made with: 
 
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/material-next-ts
-cd material-next-ts
-```
+- https://github.com/cruzamilcars
+- https://github.com/davepcage 
+- https://github.com/AlfredoJA
+- https://github.com/Ligator
 
-Install it and run:
+## How to see it 
+This repository is currently deployed in Vercel in the following url
+https://timetrade.vercel.app
+
+## How to run it localy
+Due to the time restrictions of the Hackaton, there is no mocks of the implementation 
+ of the server side request, so it is important to check that the backend is still available to use.
+
+- You can check by going to the following url
+https://timetrade.fly.dev
+
+Once you are sure that the backend is up and running you can start.
+
+First download the repository into your personal computer and then run the following commands.
 
 ```sh
 npm install
+
 npm run dev
 ```
 
-or:
+## Warnings
+In this repository has a insecure implementation that should not be copied
 
-<!-- #default-branch-switch -->
+Because backend and frontend under different domains (making cookies useless), we were force to handle sessions using JWT, this tokens, because they come from a different domain were not posible to extract them, 
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/material-next-ts)
+to work around this issue, you will find under the /API file 2 different endpoints witch job is to do the login or create accound request from the backend, and manipulating the cookies and headers from the server side so they can be used on the client
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/material-next-ts)
 
-## The idea behind the example
 
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including [Emotion](https://emotion.sh/docs/introduction), the default style engine in Material UI v5. If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
 
-## The link component
-
-The [example folder](https://github.com/mui/material-ui/tree/HEAD/examples/material-next-ts) provides an adapter for the use of [Next.js's Link component](https://nextjs.org/docs/api-reference/next/link) with MUI.
-More information [in the documentation](https://mui.com/material-ui/guides/routing/#next-js).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
