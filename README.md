@@ -19,8 +19,12 @@ TimeTrade is an idea made by:
 ![figjam.png](public%2Ffigjam.png)
 https://www.figma.com/file/Tdz7Lc54BtUhCxgDLCkJCw/TimeTrade?type=whiteboard&t=RrTHLdKMzJbMUfSf-1
 
+## Backend Repository
+It is mandataroy to be able to use the app
 
-## How to see it 
+https://github.com/Ligator/timetrade
+
+## The app in production 
 This repository is currently deployed in Vercel in the following url
 https://timetrade.vercel.app
 

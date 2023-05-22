@@ -20,7 +20,7 @@ export const Insigths: FC<InsidesInterface> = (props) => {
             </Typography>
             <Typography variant="body1"
                         sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "10rem auto", gap: "1rem", justifySelf: "flex-start"}}>
-                Puntuación media: <Box sx={{fontWeight: "bold"}}>{average_score} Horas</Box>
+                Puntuación media: <Box sx={{fontWeight: "bold"}}>{average_score} Stars</Box>
             </Typography>
 
         </Container>
