@@ -27,7 +27,8 @@ export interface ServicesListProps {
                     gap: "1rem",
                     gridAutoFlow: "column",
                     overflowX: "auto",
-                    padding: "1rem"
+                    padding: "1.5rem",
+                    gridTemplateColumns: "repeat(auto-fit, 375px)",
                 }}
             >
                 {services_list?.length > 1  &&

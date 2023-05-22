@@ -14,12 +14,20 @@ export const ProfileCard: FC<User> = (props) => {
                     display: "flex",
                     justifyContent: "space-evenly",
                     marginTop: "3rem",
-                    flexDirection: {xs: "column-reverse", md: "row"},
+                    flexDirection: "column",
                     gap: "2rem",
                     backgroundColor: "#f5f5f5",
-                    padding: "2rem"
+                    padding: "2rem",
+                    borderRadius: "4px",
                 }}
             >
+                <Grid item>
+                    <Avatar
+                        sx={{bgcolor: "#388e3c", height: "150px", width: "150px", margin: "0 auto"}}
+                        alt="profile avatar picture"
+                    >
+                    </Avatar>
+                </Grid>
                 <Grid item>
                     {firstname !== undefined &&
                         <Typography sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "4rem auto"}}>
@@ -33,13 +41,6 @@ export const ProfileCard: FC<User> = (props) => {
                         <Typography sx={{display: "grid", gridAutoFlow: "column", gridTemplateColumns: "4rem auto"}}>
                             Genero: <Box sx={{fontWeight: "bold", marginLeft: "1rem"}}>{translateGender(gender)}</Box>
                         </Typography>}
-                </Grid>
-                <Grid item>
-                    <Avatar
-                        sx={{bgcolor: "#388e3c", height: "150px", width: "150px", margin: "0 auto"}}
-                        alt="profile avatar picture"
-                    >
-                    </Avatar>
                 </Grid>
             </Grid>
         </Container>
