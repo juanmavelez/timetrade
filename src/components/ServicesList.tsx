@@ -2,7 +2,7 @@ import {Grid, Container, Typography} from '@mui/material';
 import Service, {ServiceProps} from "./Service";
 import {FC} from "react";
 import Link from "./Link";
-import {PROFILE_PAGE} from "../constants/urls";
+import {NEW_SERVICE_PAGE} from "../constants/urls";
 import {getFirstNElements} from "../utils/getFirstNelementsArray";
 
 export interface ServicesListProps {
@@ -13,6 +13,7 @@ export interface ServicesListProps {
 const MAX_NUMBER_ELEMENTS_IN_LIST = 8;
  const ServicesList: FC<ServicesListProps> = (props) => {
     const {services_list, title} = props;
+    console.log("services_list", services_list)
     return (
         <Container
             sx={{
@@ -32,8 +33,8 @@ const MAX_NUMBER_ELEMENTS_IN_LIST = 8;
                         <Service {...service}></Service>
                     </Grid>)})
                 }
-                {services_list?.length === 0 &&
-                    <Link href={PROFILE_PAGE}>
+                {services_list === undefined || services_list?.length === 0 &&
+                    <Link href={NEW_SERVICE_PAGE} sx={{padding: "3rem", margin: "0 auto"}}>
                         <Typography variant="body1">No hay servicios que mostrar, Crea uno!</Typography>
                     </Link>
                     }
