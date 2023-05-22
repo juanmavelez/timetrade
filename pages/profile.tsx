@@ -16,7 +16,7 @@ const Profile: NextPage = () => {
     const handleError = useErrorRedirection();
     const {data, error, isLoading} = useSWR(USER_PROFILE_ENDPOINT, fetcher);
     handleError(error);
-    console.log(data);
+
     if (isLoading) return <div>loading...</div>
 
     return (

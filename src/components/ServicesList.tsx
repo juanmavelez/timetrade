@@ -11,7 +11,6 @@ export interface ServicesListProps {
 
  const ServicesList: FC<ServicesListProps> = (props) => {
     const {services_list, title} = props;
-    console.log("services_list", services_list)
     return (
         <Container>
             <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>
