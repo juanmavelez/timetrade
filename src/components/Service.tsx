@@ -19,7 +19,7 @@ export interface ServiceProps {
 }
 
 const Service: FC<ServiceProps> = (props) => {
-    const {title, description, id} = props;
+    const {title, description, id, service_type} = props;
     const image = getImage();
     return (
         <Card sx={{
@@ -64,10 +64,16 @@ const Service: FC<ServiceProps> = (props) => {
                     border: "0.25px solid #2b2b2b",
                     borderRadius: " 0 0 4px 4px",
                     borderTop: "none",
-                    padding: "1rem"
+                    padding: "1rem",
+                    display: "flex",
+                    justifyContent: "space-between",
             }}>
                 <Link href={`${SERVICE_PAGE}${id}`}>Leer más</Link>
+                {service_type !== undefined && <Typography sx={{color: "#403e4a"}}>
+                    {service_type === "offered" ? "Ofrecido" : "Solicitado"}
+                </Typography>}
             </CardActions>
+
         </Card>
     );
 }
