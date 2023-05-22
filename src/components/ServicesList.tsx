@@ -23,6 +23,7 @@ export interface ServicesListProps {
                     gridAutoFlow: "column",
                     overflowX: "auto",
                     marginTop:"1rem",
+                    justifyContent: "left",
                 }}
             >
                 {services_list?.length > 1  &&
