@@ -11,7 +11,7 @@ import {useErrorRedirection} from "../../src/utils/useErrorRedirection";
 import {TasksList} from "../../src/components/TasksList/TasksList";
 import {getMyTasksFromTasks} from "../../src/utils/getMyTasksFromTasks";
 import Head from "next/head";
-import HoursRequestedForm from "../../src/components/hoursRequestForm/HoursRequestForm";
+import HoursRequestedForm from "../../src/components/HoursRequestForm/HoursRequestForm";
 
 const Service: NextPage = () => {
     useAuthUser();
@@ -30,7 +30,6 @@ const Service: NextPage = () => {
     const isOwner = userId === data?.supplier_id || userId === data?.beneficiary_id;
     const isShowButton = !isOwner && myTasks !== undefined && myTasks.length === 0
 
-    console.log(data)
     if (isLoading) return <div>loading...</div>
 
     return (

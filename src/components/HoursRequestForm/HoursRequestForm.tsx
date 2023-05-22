@@ -2,7 +2,7 @@ import {useFormik} from 'formik';
 import {Button, Container, TextField} from '@mui/material';
 import * as React from "react";
 import {FC} from "react";
-import {validationSchema} from "./validationSchema";
+import {validationSchema} from "./validationSchema"
 import {requestTask} from "../../utils/requests/requestTask";
 
 interface HoursRequestedForm {
@@ -39,7 +39,7 @@ const HoursRequestedForm: FC<HoursRequestedForm> = (props) => {
                     fullWidth
                     id="hours"
                     name="hours"
-                    label="Horas"
+                    label="Tiempo estimado en horas"
                     type="number"
                     value={formik.values.hours}
                     onChange={formik.handleChange}
@@ -47,7 +47,7 @@ const HoursRequestedForm: FC<HoursRequestedForm> = (props) => {
                     helperText={formik.touched.hours && formik.errors.hours}
                 />
                 <Button color="primary" fullWidth variant="contained" type="submit" sx={{display: "grid", mt: "2rem"}}>
-                    Submit
+                    Solicitar servicio
                 </Button>
             </form>
         </Container>
