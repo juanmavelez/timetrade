@@ -7,11 +7,11 @@ import useSWR from "swr";
 import {SHOW_SERVICE_ENDPOINT} from "../../src/constants/endpoints";
 import {fetcher} from "../../src/fetcher";
 import {getUserId} from "../../src/utils/getUserId";
-import {requestTask} from "../../src/utils/requests/requestTask";
 import {useErrorRedirection} from "../../src/utils/useErrorRedirection";
 import {TasksList} from "../../src/components/TasksList/TasksList";
 import {getMyTasksFromTasks} from "../../src/utils/getMyTasksFromTasks";
 import Head from "next/head";
+import HoursRequestedForm from "../../src/components/hoursRequestForm/HoursRequestForm";
 
 const Service: NextPage = () => {
     useAuthUser();
@@ -30,41 +30,44 @@ const Service: NextPage = () => {
     const isOwner = userId === data?.supplier_id || userId === data?.beneficiary_id;
     const isShowButton = !isOwner && myTasks !== undefined && myTasks.length === 0
 
+    console.log(data)
     if (isLoading) return <div>loading...</div>
 
-    return (<>
+    return (
+        <>
             <Head>
                 <title>{`Service | TimeTrade`}</title>
             </Head>
-            <Container sx={{display: "grid", marginTop: "2rem", gap: "1rem"}}>
+            <Container maxWidth="lg" sx={{display: "grid", marginTop: "2rem", gap: "1rem"}}>
                 <Typography variant="h3" component="h1">Servicio</Typography>
-                {data.title !== undefined && <Typography variant="body1">{data.title}</Typography>}
-                {data.description !== undefined &&
-                    <Typography variant="body1">Description: {data.description}</Typography>}
-                {data.created_at &&
-                    <Typography variant="body1">Creado el {new Date(data.created_at).toLocaleDateString()}</Typography>}
-                {isShowButton && <Button
-                    color="primary"
-                    variant="contained"
-                    sx={{display: "grid", margin: "0 auto", marginTop: "2rem",}}
-                    disabled={requested}
-                    onClick={async () => {
-                        if (serviceId !== undefined) {
-                            setRequested(true);
-                            const id = typeof serviceId === 'string' ? serviceId : serviceId[0];
-                            const requested = await requestTask(id);
-                            if (requested) {
-                                window.location.reload();
-                            }
-                            setRequested(false);
-                        }
-                    }}>
-                    Solicitar
-                </Button>}
+
+                <Container
+                    maxWidth="md"
+                    sx={{
+                        border: "1px solid #2b2b2b",
+                        padding: "4rem",
+                        display: "grid",
+                        gap: "1rem",
+                        borderRadius:"4px"
+                }}>
+                    {data.service_type !== undefined && <Typography
+                        variant="body1"> {data.service_type === "offered" ? "Oferta" : "Solicitud"}</Typography>}
+
+                    {data.title !== undefined && <Typography variant="h5" component="h2">{data.title}</Typography>}
+                    {data.description !== undefined &&
+                        <Typography variant="body1">{data.description}</Typography>}
+                    {data.created_at &&
+                        <Typography variant="body1">Creado
+                            el {new Date(data.created_at).toLocaleDateString()}</Typography>
+                    }
+                    {data?.user?.firstname !== undefined && data.user?.lastname !== undefined &&
+                        <Typography variant="body1"> {data.user.firstname} {data.user.lastname}</Typography>}
+
+                </Container>
+                {isShowButton &&  <HoursRequestedForm serviceId={data.id}></HoursRequestedForm>}
 
                 {!isShowButton && <>
                     <Divider sx={{marginTop: "2rem", marginBottom: "2rem"}}></Divider>
-                    <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>Solicitudes</Typography>
                     <TasksList tasks={myTasks}></TasksList>
                 </>}
             </Container>

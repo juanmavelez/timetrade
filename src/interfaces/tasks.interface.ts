@@ -11,4 +11,4 @@ export interface Task  {
     updated_at: string;
 }
 
-export type State = "offered" | "rejected" | "pending" | "completed";
+export type State = "accepted" | "rejected" | "pending" | "completed" ;

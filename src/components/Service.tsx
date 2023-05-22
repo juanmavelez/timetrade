@@ -71,7 +71,7 @@ const Service: FC<ServiceProps> = (props) => {
             }}>
                 <Link href={`${SERVICE_PAGE}${id}`}>Leer más</Link>
                 {service_type !== undefined && <Typography sx={{color: "#403e4a"}}>
-                    {service_type === "offered" ? "Ofrecido" : "Solicitado"}
+                    {service_type === "offered" ? "Oferta" : "Solicitud"}
                 </Typography>}
             </CardActions>
 
