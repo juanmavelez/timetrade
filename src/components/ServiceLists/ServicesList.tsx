@@ -3,6 +3,7 @@ import Service, {ServiceProps} from "../Service";
 import {FC} from "react";
 import Link from "../Link";
 import {NEW_SERVICE_PAGE} from "../../constants/urls";
+import {translationPipe} from "./tranlationPipe";
 
 export interface ServicesListProps {
    services_list: Array<ServiceProps>;
@@ -14,7 +15,7 @@ export interface ServicesListProps {
     return (
         <Container>
             <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>
-                {title}
+                {translationPipe(title)}
             </Typography>
             <Box
                 sx={{
