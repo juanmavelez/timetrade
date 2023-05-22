@@ -6,11 +6,11 @@ import {validationSchema} from "./validationSchema";
 import {requestTask} from "../../utils/requests/requestTask";
 
 interface HoursRequestedForm {
-    service_id: string
+    serviceId: string
 }
 
 const HoursRequestedForm: FC<HoursRequestedForm> = (props) => {
-    const {service_id} = props;
+    const {serviceId} = props;
 
 
     const formik = useFormik({
@@ -19,14 +19,14 @@ const HoursRequestedForm: FC<HoursRequestedForm> = (props) => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            const requested = await requestTask(service_id, values.hours);
+            const requested = await requestTask(serviceId, values.hours);
             if (requested) {
                 window.location.reload();
             }
         }
     });
 
-    if (service_id === undefined) {
+    if (serviceId === undefined) {
         return null
     }
 

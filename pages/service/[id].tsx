@@ -64,7 +64,7 @@ const Service: NextPage = () => {
                         <Typography variant="body1"> {data.user.firstname} {data.user.lastname}</Typography>}
 
                 </Container>
-                {isShowButton && <HoursRequestedForm service_id={serviceId}></HoursRequestedForm>}
+                {isShowButton &&  <HoursRequestedForm serviceId={data.id}></HoursRequestedForm>}
 
                 {!isShowButton && <>
                     <Divider sx={{marginTop: "2rem", marginBottom: "2rem"}}></Divider>
