@@ -18,7 +18,7 @@ export const statePipe = (state: State): ColorParams => {
             }
         case "pending":
             return {
-                color: "yellow", text: "En espera",
+                color: "#FFC300", text: "En espera",
             }
         case "completed":
             return {

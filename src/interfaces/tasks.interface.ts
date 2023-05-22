@@ -1,3 +1,11 @@
+interface Contactinfo {
+    id: string;
+    firstname: string;
+    lastname: string;
+    phone: string;
+    email: string;
+}
+
 export interface Task  {
     id: string;
     beneficiary_id: string;
@@ -9,6 +17,7 @@ export interface Task  {
     description: string;
     created_at: string;
     updated_at: string;
+    contact_info?: Contactinfo;
 }
 
 export type State = "accepted" | "rejected" | "pending" | "completed" ;
