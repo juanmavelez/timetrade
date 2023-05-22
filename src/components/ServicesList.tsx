@@ -13,11 +13,7 @@ export interface ServicesListProps {
     const {services_list, title} = props;
     console.log("services_list", services_list)
     return (
-        <Container
-            sx={{
-                display:"grid",
-                    gap:"1rem",
-        }}>
+        <Container>
             <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>
                 {title}
             </Typography>
@@ -27,7 +23,6 @@ export interface ServicesListProps {
                     gap: "1rem",
                     gridAutoFlow: "column",
                     overflowX: "auto",
-                    padding: "1rem"
                 }}
             >
                 {services_list?.length > 1  &&

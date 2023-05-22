@@ -23,9 +23,10 @@ const Service: FC<ServiceProps> = (props) => {
     const image = getImage();
     return (
         <Card sx={{
-            minWidth: "320px",
-            overflow: "unset",
-            height: "375px",
+            minWidth: "300px",
+            maxWidth: "375px",
+            overflow: "hidden",
+            height: "400px",
             boxShadow:"none",
             display: "grid",
             gridAutoRows: "140px auto max-content",
@@ -36,7 +37,7 @@ const Service: FC<ServiceProps> = (props) => {
                 image={`/images/${image.name}`}
                 title={image.alt}
             />
-            <CardContent sx={{borderLeft: "0.25px solid #2b2b2b", borderRight: "0.25px solid #2b2b2b" }}>
+            <CardContent sx={{borderLeft: "0.25px solid #403e4a", borderRight: "0.25px solid #403e4a" }}>
                 <Typography
                     gutterBottom
                     variant="h6"
@@ -61,7 +62,7 @@ const Service: FC<ServiceProps> = (props) => {
             </CardContent>
             <CardActions
                 sx={{
-                    border: "0.25px solid #2b2b2b",
+                    border: "0.25px solid #403e4a",
                     borderRadius: " 0 0 4px 4px",
                     borderTop: "none",
                     padding: "1rem",
