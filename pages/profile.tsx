@@ -27,8 +27,9 @@ const Profile: NextPage = () => {
         <Container maxWidth="lg" sx={{paddingBottom: "3rem"}}>
             {data.user !== undefined &&
                 <>
-                <Box sx={{display: "flex"}}>
+                <Box sx={{display: "flex", flexDirection: {xs: "column", md: "row"}}}>
                     <ProfileCard {...data.user} />
+                    <Divider sx={{ with:"1px", borderWidth: "0.5px", margin: "2rem" ,marginTop: "2rem",}}></Divider>
                     <Insigths {...data.insigths}></Insigths>
 
                 </Box>

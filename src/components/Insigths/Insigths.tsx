@@ -6,8 +6,8 @@ export const Insigths: FC<InsidesInterface> = (props) => {
     const {hours_balance, average_score, offered_hours, requested_hours} = props;
 
     return (
-        <Container sx={{display: "grid", placeItems: "center", padding: "2rem", marginTop: "3rem",}}>
-            <Typography variant="h6" component="h2" sx={{display: "flex", gap: "1rem", justifySelf: "flex-start"}}>
+        <Container sx={{display: "flex", flexDirection: "column", placeContent: "center", marginTop: "3rem", gap:"1rem"}}>
+            <Typography variant="h6" component="h2" sx={{display: "flex", gap: "1rem", justifySelf: "flex-start", borderBottom: "0.25px solid #f5f5f5"}}>
                 Saldo <Box sx={{fontWeight: "bold"}}>{hours_balance} Horas</Box>
             </Typography>
             <Typography variant="body1"

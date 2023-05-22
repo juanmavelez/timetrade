@@ -16,9 +16,6 @@ export const ProfileCard: FC<User> = (props) => {
                     marginTop: "3rem",
                     flexDirection: "column",
                     gap: "2rem",
-                    backgroundColor: "#f5f5f5",
-                    padding: "2rem",
-                    borderRadius: "4px",
                 }}
             >
                 <Grid item>
