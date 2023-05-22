@@ -11,7 +11,6 @@ export interface ServicesListProps {
 
  const ServicesList: FC<ServicesListProps> = (props) => {
     const {services_list, title} = props;
-    console.log("services_list", services_list)
     return (
         <Container>
             <Typography variant="h5" component="h2" sx={{fontWeight: "bold"}}>
@@ -23,6 +22,7 @@ export interface ServicesListProps {
                     gap: "1rem",
                     gridAutoFlow: "column",
                     overflowX: "auto",
+                    marginTop:"1rem",
                 }}
             >
                 {services_list?.length > 1  &&
