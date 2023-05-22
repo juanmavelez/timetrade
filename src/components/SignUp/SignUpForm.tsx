@@ -13,8 +13,7 @@ import {
     Radio
 } from '@mui/material';
 import {LOCAL_SIGN_UP} from "../../constants/endpoints";
-import {HOME_PAGE} from "../../constants/urls";
-import {localStorageService} from "../../services/localStorageService";
+import {LOGIN_PAGE} from "../../constants/urls";
 
 const SignUpForm: FC = () => {
     const router = useRouter();
@@ -53,8 +52,7 @@ const SignUpForm: FC = () => {
                 if (response.ok) {
                     const signUpResponse = await response.json();
                     const token =  signUpResponse.split(' ')[1];
-                    localStorageService.setItem('Bearer', token);
-                    void router.push(HOME_PAGE);
+                    void router.push(LOGIN_PAGE);
                 }
             } catch (error){
                 console.error(error);

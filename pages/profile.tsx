@@ -10,6 +10,7 @@ import {useErrorRedirection} from "../src/utils/useErrorRedirection";
 import Head from "next/head";
 import * as React from "react";
 import {Insigths} from "../src/components/Insigths/Insigths";
+import {TasksList} from "../src/components/TasksList/TasksList";
 
 const Profile: NextPage = () => {
     useAuthUser();
@@ -17,6 +18,7 @@ const Profile: NextPage = () => {
     const {data, error, isLoading} = useSWR(USER_PROFILE_ENDPOINT, fetcher);
     handleError(error);
 
+    console.log(data)
     if (isLoading) return <div>loading...</div>
 
     return (
@@ -24,8 +26,8 @@ const Profile: NextPage = () => {
             <Head>
                 <title>{`Perfil | TimeTrade`}</title>
             </Head>
-            <Typography variant="h3" component="h1" mt={"3rem"} sx={{marginLeft:"3rem"}}>Perfil</Typography>
             <Container maxWidth="lg" sx={{paddingBottom: "3rem"}}>
+                <Typography variant="h3" component="h1" mt={"3rem"}>Perfil</Typography>
                 {data.user !== undefined &&
                     <>
                         <Box sx={{display: "flex", flexDirection: {xs: "column", md: "row"}}}>
@@ -38,6 +40,7 @@ const Profile: NextPage = () => {
                         <Divider sx={{marginTop: "2rem", marginBottom: "2rem"}}/>
                     </>
                 }
+
                 {data.requested_services !== undefined &&
                     <>
                         <ServicesList services_list={data.requested_services}
@@ -49,8 +52,11 @@ const Profile: NextPage = () => {
                     <>
                         <ServicesList services_list={data.offered_services}
                                       title={"Servicios ofrecidos"}></ServicesList>
+                        <Divider sx={{marginTop: "2rem", marginBottom: "2rem"}}/>
                     </>
                 }
+
+                {data.tasks !== undefined && <TasksList  tasks={data.tasks}></TasksList>}
             </Container>
         </>
     )

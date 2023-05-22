@@ -8,7 +8,7 @@ interface ColorParams {
 export const statePipe = (state: State): ColorParams => {
 
     switch (state) {
-        case "offered":
+        case "accepted":
             return {
                 color: "green", text: "Ofrecida",
             };
